@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="CoStudio eyedropper mark">
+  <rect width="128" height="128" rx="27" fill="#22271d"/>
+  <circle cx="55" cy="81" r="25" fill="none" stroke="#6a7d4e" stroke-width="1.1"/>
+  <circle cx="55" cy="81" r="33" fill="none" stroke="#d9f177" stroke-width="4.9"/>
+  <path d="M21 81h7M55 107v8" stroke="#d9f177" stroke-linecap="round" stroke-width="2.4"/>
+  <g transform="translate(58 78) rotate(-45)">
+    <rect x="-6" y="-6" width="63" height="12" rx="6" fill="#d9f177" stroke="#22271d" stroke-width="3"/>
+    <rect x="35" y="-10" width="38" height="20" rx="9" fill="#d9f177" stroke="#22271d" stroke-width="2"/>
+    <path d="M40-9V9M9 0h25" stroke="#22271d" stroke-width="2.8" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,37 @@
+name: Build and test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  macOS:
+    runs-on: macos-15
+    timeout-minutes: 30
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_16.4.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./scripts/check-repository.sh
+      - name: Build release
+        run: xcodebuild -project CoStudio.xcodeproj -scheme CoStudio -configuration Release -destination 'generic/platform=macOS' CODE_SIGNING_ALLOWED=NO build
+      - name: Run macOS tests
+        run: xcodebuild -project CoStudio.xcodeproj -scheme CoStudio -destination 'platform=macOS' -parallel-testing-enabled NO -only-testing:CoStudioTests test
+  iPadOS:
+    runs-on: macos-15
+    timeout-minutes: 35
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_16.4.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build iPad device target
+        run: xcodebuild -project CoStudio.xcodeproj -scheme CoStudio -configuration Release -destination 'generic/platform=iOS' CODE_SIGNING_ALLOWED=NO build
+      - name: Run iPad simulator tests
+        run: |
+          ipad="$(./scripts/select-ipad.sh)"
+          xcodebuild -project CoStudio.xcodeproj -scheme CoStudio -destination "id=$ipad" -parallel-testing-enabled NO test

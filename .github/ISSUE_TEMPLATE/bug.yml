@@ -1,0 +1,23 @@
+name: Bug report
+description: Report incorrect behavior in CoStudio
+title: "[Bug]: "
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened?
+      description: Include the steps, expected result, and actual result.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Version, OS, and device
+      placeholder: Example — commit abc123, iPadOS 18.5, iPad Air
+    validations:
+      required: true
+  - type: textarea
+    id: files
+    attributes:
+      label: Optional reproduction material
+      description: Please share only synthetic or public files. Report security issues privately.
